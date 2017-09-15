@@ -21,8 +21,23 @@ public class TopicController {
         return topicService.getAllTopics();
     }
 
+    @GetMapping(path = "/{id}", produces = "application/json")
+    public Topic getTopicById(@PathVariable("id") Long id){
+        return topicService.getTopicById(id);
+    }
+
     @PostMapping(consumes = "application/json" )
     public void addTopic(@RequestBody  Topic topic){
         topicService.addTopic(topic);
+    }
+
+    @PutMapping(path = "/{id}", consumes = "application/json")
+    public void updateTopic(@PathVariable("id") long id, @RequestBody Topic topic){
+        topicService.updateTopic(id,topic);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void deleteTopic(@PathVariable("id") Long id){
+        topicService.deleteTopic(id);
     }
 }

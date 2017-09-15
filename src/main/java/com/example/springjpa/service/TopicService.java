@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ashoksurya on 15-09-2017.
- */
+
 @Service
 public class TopicService {
     @Autowired
@@ -23,5 +21,17 @@ public class TopicService {
 
     public void addTopic(Topic topic){
         topicRepository.save(topic);
+    }
+
+    public Topic getTopicById(Long id) {
+        return topicRepository.findOne(id);
+    }
+
+    public void updateTopic(long id, Topic topic) {
+        topicRepository.save(topic);
+    }
+
+    public void deleteTopic(Long id) {
+        topicRepository.delete(id);
     }
 }
